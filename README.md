@@ -2,10 +2,6 @@
 
 Kana Flashcards is a web application designed to help users learn and practice Hiragana and Katakana characters through interactive flashcards. The application allows users to select characters, track their progress, and test their knowledge in a fun and engaging way.
 
-## Getting Started
-
-To get started with the Kana Flashcards application, follow the instructions below to set up the project on your local machine.
-
 ## Features
 
 - Interactive flashcards for Hiragana and Katakana characters.
