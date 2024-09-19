@@ -9,7 +9,7 @@ import AuthCard from './components/AuthCard';
 import ProfileButton from './components/ProfileButton';
 import LogoutButton from './components/LogoutButton';
 
-function App() {
+export default function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showReading, setShowReading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('hiragana');
@@ -35,7 +35,7 @@ function App() {
     };
 
     fetchFlashcards();
-  }, [selectedCategory, selectedKana]);
+  }, [selectedCategory, selectedKana, user]);
 
   useEffect(() => {
     updateFlashcards();
@@ -78,27 +78,12 @@ function App() {
       });
   };
 
-  const handleLogin = async (email, password) => {
-    try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('userId', response.data.user.id);
-      setUser(response.data.user);
-    } catch (error) {
-      console.error('Error logging in:', error.response?.data?.msg);
-      throw error;
-    }
+  const handleLoginSuccess = (user) => {
+    setUser(user);
   };
 
-  const handleRegister = async (username, email, password) => {
-    try {
-      const response = await axios.post('http://localhost:5000/api/users/register', { username, email, password });
-      console.log(response.data.msg); 
-      await handleLogin(email, password);
-    } catch (error) {
-      console.error('Error registering:', error.response.data.msg);
-
-    }
+  const handleRegisterSuccess = (user) => {
+    setUser(user);
   };
 
   const handleLogout = () => {
@@ -112,7 +97,7 @@ function App() {
       <header className="text-center mb-8">
         <h1 className={`text-4xl font-bold mb-6 text-${theme[selectedCategory].primary}-800`}>Kana Flashcards</h1>
         {!user ? (
-          <AuthCard onLogin={handleLogin} onRegister={handleRegister} />
+          <AuthCard onLoginSuccess={handleLoginSuccess} onRegisterSuccess={handleRegisterSuccess} />
         ) : (
           <>
 
@@ -138,7 +123,7 @@ function App() {
                 </button>
                 <div className="flex justify-center space-x-4 mb-4 mt-4">
                   <ProfileButton onClick={() => {
-                    // Navigate to profile (implement your profile navigation logic)
+                  
                   }} />
                   <LogoutButton onClick={handleLogout} />
                 </div>
@@ -159,5 +144,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

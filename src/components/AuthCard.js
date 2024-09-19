@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Login from './Login';
 import Register from './Register';
 
-function AuthCard({ onLogin, onRegister }) {
+function AuthCard({ onLoginSuccess, onRegisterSuccess }) {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
@@ -11,9 +11,9 @@ function AuthCard({ onLogin, onRegister }) {
         {isLogin ? 'Login' : 'Register'}
       </h2>
       {isLogin ? (
-        <Login onLogin={onLogin} />
+        <Login onLoginSuccess={onLoginSuccess} />
       ) : (
-        <Register onRegister={onRegister} />
+        <Register onRegisterSuccess={onRegisterSuccess} />
       )}
       <div className="mt-4 text-center">
         <button
