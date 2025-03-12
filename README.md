@@ -1,6 +1,6 @@
-# Kana Flashcards
+# Kana Practise App
 
-Kana Flashcards is a web application designed to help users learn and practice Hiragana and Katakana characters through interactive flashcards. The application allows users to select characters, track their progress, and test their knowledge in a fun and engaging way.
+Kana Practise App is a web application designed to help users learn and practice Hiragana and Katakana characters through interactive flashcards. The application allows users to select characters, track their progress, and test their knowledge in a fun and engaging way.
 
 ## Features
 
